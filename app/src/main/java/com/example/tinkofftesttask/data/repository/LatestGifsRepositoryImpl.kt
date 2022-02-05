@@ -1,5 +1,9 @@
 package com.example.tinkofftesttask.data.repository
 
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import com.example.tinkofftesttask.data.datasource.LatestGifPagingSource
 import com.example.tinkofftesttask.data.datasource.LatestGifsDataSource
 import com.example.tinkofftesttask.data.model.GifDto
 import com.example.tinkofftesttask.data.util.Resource
@@ -8,10 +12,13 @@ import com.example.tinkofftesttask.domain.repository.LatestGifsRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class LatestGifsRepositoryImpl @Inject constructor(
     private val latestGifsDataSource: LatestGifsDataSource,
-    private val responseHandler: ResponseHandler
+    private val responseHandler: ResponseHandler,
+    private val latestGifPagingSource: LatestGifPagingSource
 ) :
     LatestGifsRepository {
 
@@ -27,4 +34,15 @@ class LatestGifsRepositoryImpl @Inject constructor(
             }
         }
     }
+
+    override suspend fun getLatestGifsPaging(): Flow<PagingData<GifDto>> =
+        Pager(
+            PagingConfig(
+                pageSize = 5,
+                maxSize = 20,
+                enablePlaceholders = false
+            ),
+            pagingSourceFactory = { latestGifPagingSource }
+        ).flow
+
 }

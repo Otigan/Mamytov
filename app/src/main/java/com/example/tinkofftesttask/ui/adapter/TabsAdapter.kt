@@ -1,9 +1,12 @@
-package com.example.tinkofftesttask.ui
+package com.example.tinkofftesttask.ui.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.tinkofftesttask.ui.HotGifsFragment
+import com.example.tinkofftesttask.ui.LatestGifsFragment
+import com.example.tinkofftesttask.ui.TopGifsFragment
 
 class TabsAdapter(supportFragmentManager: FragmentManager, lifecycle: Lifecycle) :
     FragmentStateAdapter(supportFragmentManager, lifecycle) {
@@ -24,7 +27,7 @@ class TabsAdapter(supportFragmentManager: FragmentManager, lifecycle: Lifecycle)
                 HotGifsFragment()
             }
             else -> {
-                LatestGifsFragment()
+                HotGifsFragment()
             }
         }
     }

@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="400dp"
     app:cardCornerRadius="10dp"
     tools:context=".ui.LatestGifsFragment">
 
     <ImageView
         android:id="@+id/card_image"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
         android:scaleType="centerCrop" />
 </androidx.cardview.widget.CardView>

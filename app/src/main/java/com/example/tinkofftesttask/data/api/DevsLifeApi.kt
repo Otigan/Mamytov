@@ -3,7 +3,6 @@ package com.example.tinkofftesttask.data.api
 import com.example.tinkofftesttask.data.model.Result
 import retrofit2.http.GET
 import retrofit2.http.Path
-import retrofit2.http.Query
 
 
 interface DevsLifeApi {
@@ -12,23 +11,20 @@ interface DevsLifeApi {
         const val BASE_URL = "https://developerslife.ru/"
     }
 
-    @GET("latest/{page}")
+    @GET("latest/{page}?json=true")
     suspend fun getLatestGifs(
         @Path(value = "page", encoded = true) page: Int,
-        @Query("json") json: Boolean = true
     ): Result
 
-    @GET("top/{page}")
+    @GET("top/{page}?json=true")
     suspend fun getTopGifs(
         @Path(value = "page", encoded = true) page: Int,
-        @Query("json") json: Boolean
-    )
+    ): Result
 
-    @GET("hot/{page}")
+    @GET("hot/{page}?json=true")
     suspend fun getHotGifs(
         @Path(value = "page", encoded = true) page: Int,
-        @Query("json") json: Boolean
-    )
+    ): Result
 
 
 }

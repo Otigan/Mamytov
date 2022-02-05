@@ -4,8 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import com.example.tinkofftesttask.data.model.GifDto
-import com.example.tinkofftesttask.domain.use_case.GetLatestGifPagingUseCase
-import com.example.tinkofftesttask.domain.use_case.GetLatestGifsUseCase
+import com.example.tinkofftesttask.domain.use_case.GetTopGifsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -14,17 +13,8 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-sealed class GifsEvent() {
-    data class Success(val gifs: List<GifDto>) : GifsEvent()
-    data class Error(val errorMessage: String) : GifsEvent()
-    object Loading : GifsEvent()
-}
-
 @HiltViewModel
-class LatestGifsViewModel @Inject constructor(
-    private val getLatestGifsUseCase: GetLatestGifsUseCase,
-    private val getLatestGifPagingUseCase: GetLatestGifPagingUseCase
-) :
+class TopGifsViewModel @Inject constructor(private val getTopGifsUseCase: GetTopGifsUseCase) :
     ViewModel() {
 
     private val _gifs = MutableStateFlow<PagingData<GifDto>>(PagingData.empty())
@@ -32,7 +22,7 @@ class LatestGifsViewModel @Inject constructor(
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
-            getLatestGifPagingUseCase().collectLatest {
+            getTopGifsUseCase().collectLatest {
                 _gifs.value = it
             }
         }

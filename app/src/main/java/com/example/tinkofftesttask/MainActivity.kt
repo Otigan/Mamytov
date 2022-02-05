@@ -3,7 +3,7 @@ package com.example.tinkofftesttask
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tinkofftesttask.databinding.ActivityMainBinding
-import com.example.tinkofftesttask.ui.TabsAdapter
+import com.example.tinkofftesttask.ui.adapter.TabsAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 
