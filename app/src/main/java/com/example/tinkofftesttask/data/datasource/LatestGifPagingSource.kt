@@ -2,9 +2,9 @@ package com.example.tinkofftesttask.data.datasource
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.bumptech.glide.load.HttpException
 import com.example.tinkofftesttask.data.api.DevsLifeApi
 import com.example.tinkofftesttask.data.model.GifDto
+import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -30,9 +30,11 @@ class LatestGifPagingSource @Inject constructor(private val api: DevsLifeApi) :
                 prevKey = if (position == 1) null else position.minus(1),
                 nextKey = if (response.result.isEmpty()) null else position.plus(1)
             )
+        } catch (e: HttpException) {
+            LoadResult.Error(e)
         } catch (e: IOException) {
             LoadResult.Error(e)
-        } catch (e: HttpException) {
+        } catch (e: NullPointerException) {
             LoadResult.Error(e)
         }
     }

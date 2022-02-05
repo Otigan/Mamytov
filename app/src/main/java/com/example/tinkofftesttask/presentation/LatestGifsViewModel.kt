@@ -5,7 +5,6 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import com.example.tinkofftesttask.data.model.GifDto
 import com.example.tinkofftesttask.domain.use_case.GetLatestGifPagingUseCase
-import com.example.tinkofftesttask.domain.use_case.GetLatestGifsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -22,7 +21,6 @@ sealed class GifsEvent() {
 
 @HiltViewModel
 class LatestGifsViewModel @Inject constructor(
-    private val getLatestGifsUseCase: GetLatestGifsUseCase,
     private val getLatestGifPagingUseCase: GetLatestGifPagingUseCase
 ) :
     ViewModel() {

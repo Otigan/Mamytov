@@ -7,7 +7,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface LatestGifsRepository {
 
-    suspend fun getLatestGifs(page: Int): Flow<Resource<List<GifDto>>>
-
     suspend fun getLatestGifsPaging(): Flow<PagingData<GifDto>>
 }
