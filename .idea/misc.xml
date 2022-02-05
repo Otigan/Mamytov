@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/brave/AndroidStudioProjects/TinkoffTestTask/app/src/main/res/drawable/item_view_pager.xml" value="0.3536458333333333" />
+        <entry key="..\:/Users/brave/AndroidStudioProjects/TinkoffTestTask/app/src/main/res/drawable/round_button.xml" value="0.24537037037037038" />
+        <entry key="..\:/Users/brave/AndroidStudioProjects/TinkoffTestTask/app/src/main/res/layout/activity_main.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/brave/AndroidStudioProjects/TinkoffTestTask/app/src/main/res/layout/fragment_latest.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/brave/AndroidStudioProjects/TinkoffTestTask/app/src/main/res/layout/fragment_latest_gifs.xml" value="0.33" />
+        <entry key="..\:/Users/brave/AndroidStudioProjects/TinkoffTestTask/app/src/main/res/layout/fragment_top_gifs.xml" value="0.33350703491401773" />
+        <entry key="..\:/Users/brave/AndroidStudioProjects/TinkoffTestTask/app/src/main/res/layout/layout_hot_gifs.xml" value="0.3268641470888662" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
