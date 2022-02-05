@@ -7,10 +7,33 @@
     app:cardCornerRadius="10dp"
     tools:context=".ui.LatestGifsFragment">
 
-    <ImageView
-        android:id="@+id/card_image"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:scaleType="centerCrop" />
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/card_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_alignBottom="@id/card_image"
+            android:background="@drawable/shape_gradient" />
+
+        <TextView
+            android:id="@+id/gif_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/card_image"
+            android:layout_margin="8dp"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            tools:text="Sample title" />
+    </RelativeLayout>
+
+
 </androidx.cardview.widget.CardView>

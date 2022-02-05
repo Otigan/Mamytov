@@ -27,7 +27,7 @@ class TabsAdapter(supportFragmentManager: FragmentManager, lifecycle: Lifecycle)
                 HotGifsFragment()
             }
             else -> {
-                HotGifsFragment()
+                Fragment()
             }
         }
     }

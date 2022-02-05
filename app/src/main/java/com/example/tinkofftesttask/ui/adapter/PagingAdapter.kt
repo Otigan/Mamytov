@@ -47,6 +47,8 @@ class PagingAdapter() :
                     .placeholder(circularProgressDrawable)
                     .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
                     .into(cardImage)
+
+                gifTitle.text = gif.description
             }
         }
     }

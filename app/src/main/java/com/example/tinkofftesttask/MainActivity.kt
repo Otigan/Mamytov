@@ -26,13 +26,13 @@ class MainActivity : AppCompatActivity() {
         TabLayoutMediator(binding.tabsGif, binding.viewPager) { tab, position ->
             when (position) {
                 0 -> {
-                    tab.text = "Latest"
+                    tab.text = resources.getString(R.string.tab_latest)
                 }
                 1 -> {
-                    tab.text = "Top"
+                    tab.text = resources.getString(R.string.tab_top)
                 }
                 2 -> {
-                    tab.text = "Hot"
+                    tab.text = resources.getString(R.string.tab_hot)
                 }
             }
         }.attach()
