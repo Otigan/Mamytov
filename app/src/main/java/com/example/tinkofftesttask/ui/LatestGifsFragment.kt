@@ -19,6 +19,7 @@ import com.example.tinkofftesttask.databinding.FragmentLatestGifsBinding
 import com.example.tinkofftesttask.presentation.ConnectivityViewModel
 import com.example.tinkofftesttask.presentation.LatestGifsViewModel
 import com.example.tinkofftesttask.ui.adapter.PagingAdapter
+import com.example.tinkofftesttask.ui.adapter.ZoomOutPageTransformer
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -68,8 +69,11 @@ class LatestGifsFragment : Fragment(R.layout.fragment_latest_gifs) {
             }
         })
 
+        binding.viewPager.offscreenPageLimit = ViewPager2.OFFSCREEN_PAGE_LIMIT_DEFAULT
+        binding.viewPager.setPageTransformer(ZoomOutPageTransformer())
+
         viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
                     connectivityViewModel.hasInternet.collectLatest { hasInternet ->
                         if (!hasInternet) {

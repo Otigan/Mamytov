@@ -31,20 +31,19 @@ class PagingAdapter() :
     ) :
         RecyclerView.ViewHolder(binding.root) {
 
-        private val circularProgressDrawable = CircularProgressDrawable(binding.root.context)
+        /*private val circularProgressDrawable = CircularProgressDrawable(binding.root.context)
 
         init {
             circularProgressDrawable.strokeWidth = 5f
             circularProgressDrawable.centerRadius = 30f
             circularProgressDrawable.start()
-        }
+        }*/
 
         fun bind(gif: GifDto) {
             binding.apply {
                 Glide.with(root)
-                    .asGif()
                     .load(gif.gifURL)
-                    .placeholder(circularProgressDrawable)
+                    .thumbnail(Glide.with(root).load(gif.previewURL))
                     .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
                     .into(cardImage)
 

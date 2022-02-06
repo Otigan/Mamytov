@@ -2,8 +2,10 @@ package com.example.tinkofftesttask
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.viewpager2.widget.ViewPager2.OFFSCREEN_PAGE_LIMIT_DEFAULT
 import com.example.tinkofftesttask.databinding.ActivityMainBinding
 import com.example.tinkofftesttask.ui.adapter.TabsAdapter
+import com.example.tinkofftesttask.ui.adapter.ZoomOutPageTransformer
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -22,6 +24,8 @@ class MainActivity : AppCompatActivity() {
         val tabsAdapter = TabsAdapter(supportFragmentManager, lifecycle)
 
         binding.viewPager.adapter = tabsAdapter
+        binding.viewPager.offscreenPageLimit = OFFSCREEN_PAGE_LIMIT_DEFAULT
+        binding.viewPager.setPageTransformer(ZoomOutPageTransformer())
 
         TabLayoutMediator(binding.tabsGif, binding.viewPager) { tab, position ->
             when (position) {
