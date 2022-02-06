@@ -29,8 +29,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/card_image"
-            android:layout_margin="8dp"
-            android:textColor="@color/white"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:textColor="?gifDescriptionTextColor"
             android:textSize="20sp"
             tools:text="Sample title" />
     </RelativeLayout>

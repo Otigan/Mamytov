@@ -3,6 +3,7 @@ package com.example.tinkofftesttask.data.datasource
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.paging.PagingSource
 import com.example.tinkofftesttask.data.api.DevsLifeApi
+import com.example.tinkofftesttask.data.model.Result
 import com.example.tinkofftesttask.domain.model.Gif
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -19,8 +20,9 @@ import org.mockito.kotlin.mock
 import retrofit2.HttpException
 import retrofit2.Response
 
+
 @ExperimentalCoroutinesApi
-class LatestGifsPagingSourceTest {
+class HotGifsPagingSourceTest {
 
     @get:Rule
     val instantTaskExecutor = InstantTaskExecutorRule()
@@ -28,11 +30,11 @@ class LatestGifsPagingSourceTest {
     @Mock
     val api: DevsLifeApi = mock()
 
-    private lateinit var latestGifsPagingSource: LatestGifsPagingSource
+    private lateinit var hotGifsPagingSource: HotGifsPagingSource
 
     @Before
     fun setup() {
-        latestGifsPagingSource = LatestGifsPagingSource(api)
+        hotGifsPagingSource = HotGifsPagingSource(api)
     }
 
 
@@ -45,9 +47,9 @@ class LatestGifsPagingSourceTest {
                 )
             )
         )
-        given(api.getLatestGifs(any())).willThrow(error)
+        given(api.getHotGifs(any())).willThrow(error)
         val expectedResult = PagingSource.LoadResult.Error<Int, Gif>(error)
-        val realResult = latestGifsPagingSource.load(
+        val realResult = hotGifsPagingSource.load(
             PagingSource.LoadParams.Refresh(
                 key = 0,
                 loadSize = 1,
@@ -58,10 +60,10 @@ class LatestGifsPagingSourceTest {
     }
 
     @Test
-    fun `gif paging source load - failure - received null`() = runTest {
-        given(api.getLatestGifs(any())).willReturn(null)
+    fun `hot gif paging source load - failure - received null`() = runTest {
+        given(api.getHotGifs(any())).willReturn(null)
         val expectedResult = PagingSource.LoadResult.Error<Int, Gif>(NullPointerException())
-        val realResult = latestGifsPagingSource.load(
+        val realResult = hotGifsPagingSource.load(
             PagingSource.LoadParams.Refresh(
                 key = 0,
                 loadSize = 1,

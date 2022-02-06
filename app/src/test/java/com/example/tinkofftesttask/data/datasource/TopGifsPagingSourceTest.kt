@@ -20,7 +20,7 @@ import retrofit2.HttpException
 import retrofit2.Response
 
 @ExperimentalCoroutinesApi
-class LatestGifsPagingSourceTest {
+class TopGifsPagingSourceTest {
 
     @get:Rule
     val instantTaskExecutor = InstantTaskExecutorRule()
@@ -28,11 +28,11 @@ class LatestGifsPagingSourceTest {
     @Mock
     val api: DevsLifeApi = mock()
 
-    private lateinit var latestGifsPagingSource: LatestGifsPagingSource
+    private lateinit var topGifsPagingSource: TopGifsPagingSource
 
     @Before
     fun setup() {
-        latestGifsPagingSource = LatestGifsPagingSource(api)
+        topGifsPagingSource = TopGifsPagingSource(api)
     }
 
 
@@ -45,9 +45,9 @@ class LatestGifsPagingSourceTest {
                 )
             )
         )
-        given(api.getLatestGifs(any())).willThrow(error)
+        given(api.getTopGifs(any())).willThrow(error)
         val expectedResult = PagingSource.LoadResult.Error<Int, Gif>(error)
-        val realResult = latestGifsPagingSource.load(
+        val realResult = topGifsPagingSource.load(
             PagingSource.LoadParams.Refresh(
                 key = 0,
                 loadSize = 1,
@@ -59,9 +59,9 @@ class LatestGifsPagingSourceTest {
 
     @Test
     fun `gif paging source load - failure - received null`() = runTest {
-        given(api.getLatestGifs(any())).willReturn(null)
+        given(api.getTopGifs(any())).willReturn(null)
         val expectedResult = PagingSource.LoadResult.Error<Int, Gif>(NullPointerException())
-        val realResult = latestGifsPagingSource.load(
+        val realResult = topGifsPagingSource.load(
             PagingSource.LoadParams.Refresh(
                 key = 0,
                 loadSize = 1,

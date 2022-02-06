@@ -27,6 +27,39 @@
         android:orientation="vertical"
         app:layout_constraintGuide_end="@dimen/guidelines_begin" />
 
+    <ImageView
+        android:id="@+id/img_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/txt_view_error"
+        app:layout_constraintEnd_toEndOf="@id/guideline_end"
+        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintTop_toTopOf="@id/guideline_top"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+
+    <TextView
+        android:id="@+id/txt_view_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="?mainTextColor"
+        app:layout_constraintBottom_toTopOf="@id/btn_retry"
+        app:layout_constraintEnd_toEndOf="@id/guideline_end"
+        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintTop_toBottomOf="@id/img_error"
+        tools:text="Sample error message" />
+
+    <Button
+        android:id="@+id/btn_retry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_retry"
+        app:layout_constraintBottom_toTopOf="@id/btn_barrier"
+        app:layout_constraintEnd_toEndOf="@id/guideline_end"
+        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintTop_toBottomOf="@id/txt_view_error" />
+
     <ProgressBar
         android:id="@+id/progress_bar"
         android:layout_width="wrap_content"
@@ -48,11 +81,20 @@
         app:layout_constraintStart_toStartOf="@id/guideline_start"
         app:layout_constraintTop_toTopOf="@id/guideline_top" />
 
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/btn_barrier"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:barrierDirection="top"
+        app:constraint_referenced_ids="btn_next, btn_prev, btn_refresh" />
+
 
     <ImageButton
         android:id="@+id/btn_refresh"
         android:layout_width="@dimen/navigation_btn_size"
         android:layout_height="@dimen/navigation_btn_size"
+        android:layout_marginHorizontal="10dp"
         android:background="@drawable/refresh"
         app:layout_constraintBottom_toBottomOf="@id/guideline_bottom"
         app:layout_constraintEnd_toStartOf="@id/btn_next"
@@ -64,7 +106,7 @@
         android:id="@+id/btn_prev"
         android:layout_width="@dimen/navigation_btn_size"
         android:layout_height="@dimen/navigation_btn_size"
-        android:background="@drawable/left_arrow"
+        android:background="@drawable/arrow_left"
         app:layout_constraintBottom_toBottomOf="@id/guideline_bottom"
         app:layout_constraintEnd_toStartOf="@id/btn_refresh"
         app:layout_constraintHorizontal_chainStyle="packed"

@@ -3,6 +3,7 @@ package com.example.tinkofftesttask.presentation
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.example.tinkofftesttask.domain.model.Gif
 import com.example.tinkofftesttask.domain.use_case.GetTopGifsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -22,7 +23,7 @@ class TopGifsViewModel @Inject constructor(private val getTopGifsUseCase: GetTop
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
-            getTopGifsUseCase().collectLatest {
+            getTopGifsUseCase().cachedIn(viewModelScope).collectLatest {
                 _gifs.value = it
             }
         }

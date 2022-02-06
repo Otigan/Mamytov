@@ -30,14 +30,6 @@ class PagingAdapter() :
     ) :
         RecyclerView.ViewHolder(binding.root) {
 
-        /*private val circularProgressDrawable = CircularProgressDrawable(binding.root.context)
-
-        init {
-            circularProgressDrawable.strokeWidth = 5f
-            circularProgressDrawable.centerRadius = 30f
-            circularProgressDrawable.start()
-        }*/
-
         fun bind(gif: Gif) {
             binding.apply {
                 Glide.with(root)

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="gifDescriptionTextColor" format="reference|color" />
+    <attr name="mainTextColor" format="reference|color" />
+</resources>

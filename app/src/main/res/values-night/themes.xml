@@ -12,5 +12,12 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="mainTextColor">@color/white</item>
+        <item name="gifDescriptionTextColor">@color/white</item>
+    </style>
+
+    <style name="Theme.TabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabSelectedTextColor">#037EE0</item>
+        <item name="tabTextColor">@android:color/white</item>
     </style>
 </resources>

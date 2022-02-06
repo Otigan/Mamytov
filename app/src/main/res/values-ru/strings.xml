@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">TinkoffTestTask</string>
     <string name="tab_latest">Последние</string>
     <string name="tab_top">Лучшие</string>
     <string name="tab_hot">Горячие</string>
+    <string name="loading_error">Произошла ошибка при загрузке данных. Проверьте подключение к сети.</string>
+    <string name="btn_retry">Повторить</string>
+    <string name="empty_result">Не найдено гиф-изображений</string>
 </resources>

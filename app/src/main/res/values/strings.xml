@@ -4,5 +4,7 @@
     <string name="tab_latest">Latest</string>
     <string name="tab_top">Top</string>
     <string name="tab_hot">Hot</string>
-
+    <string name="loading_error">An error occurred while loading the data. Check your network connection.</string>
+    <string name="btn_retry">Retry</string>
+    <string name="empty_result">No gif images found</string>
 </resources>

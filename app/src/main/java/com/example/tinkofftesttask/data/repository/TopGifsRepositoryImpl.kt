@@ -3,6 +3,7 @@ package com.example.tinkofftesttask.data.repository
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
+import com.example.tinkofftesttask.data.api.DevsLifeApi
 import com.example.tinkofftesttask.data.datasource.TopGifsPagingSource
 import com.example.tinkofftesttask.domain.model.Gif
 import com.example.tinkofftesttask.domain.repository.TopGifsRepository
@@ -11,7 +12,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class TopGifsRepositoryImpl @Inject constructor(private val topGifsPagingSource: TopGifsPagingSource) :
+class TopGifsRepositoryImpl @Inject constructor(private val api: DevsLifeApi) :
     TopGifsRepository {
 
     override suspend fun getTopGifs(): Flow<PagingData<Gif>> =
@@ -21,6 +22,6 @@ class TopGifsRepositoryImpl @Inject constructor(private val topGifsPagingSource:
                 maxSize = 20,
                 enablePlaceholders = false
             ),
-            pagingSourceFactory = { topGifsPagingSource }
+            pagingSourceFactory = { TopGifsPagingSource(api) }
         ).flow
 }
