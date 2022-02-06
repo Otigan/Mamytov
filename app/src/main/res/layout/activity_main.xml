@@ -5,10 +5,35 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:src="@drawable/ic_baseline_account_circle_24" />
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="DevelopersLife"
+            android:textColor="#000"
+            android:textSize="30sp" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabs_gif"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/view_pager"

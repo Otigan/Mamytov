@@ -21,6 +21,10 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
+        setSupportActionBar(binding.toolbar)
+
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+
         val tabsAdapter = TabsAdapter(supportFragmentManager, lifecycle)
 
         binding.viewPager.adapter = tabsAdapter
