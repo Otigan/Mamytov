@@ -3,7 +3,6 @@ package com.example.tinkofftesttask.data.datasource
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.paging.PagingSource
 import com.example.tinkofftesttask.data.api.DevsLifeApi
-import com.example.tinkofftesttask.data.model.GifDto
 import com.example.tinkofftesttask.data.model.Result
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
@@ -29,16 +28,16 @@ class LatestGifsPagingSourceTest {
     @Mock
     val api: DevsLifeApi = mock()
 
-    private lateinit var latestGifPagingSource: LatestGifPagingSource
+    private lateinit var latestGifsPagingSource: LatestGifsPagingSource
 
     @Before
     fun setup() {
-        latestGifPagingSource = LatestGifPagingSource(api)
+        latestGifsPagingSource = LatestGifsPagingSource(api)
     }
 
     companion object {
         val reviewsResponse = Result(
-            result = listOf(
+            gifs = listOf(
                 GifDto(
                     id = 17090,
                     description = "Unhandled exception",
@@ -62,7 +61,7 @@ class LatestGifsPagingSourceTest {
             totalCount = 10,
         )
         val nextReviewsResponse = Result(
-            result = listOf(
+            gifs = listOf(
                 GifDto(
                     id = 17090,
                     description = "Unhandled exception",
@@ -100,7 +99,7 @@ class LatestGifsPagingSourceTest {
         given(api.getLatestGifs(any())).willThrow(error)
         val expectedResult = PagingSource.LoadResult.Error<Int, GifDto>(error)
         assertEquals(
-            expectedResult, latestGifPagingSource.load(
+            expectedResult, latestGifsPagingSource.load(
                 PagingSource.LoadParams.Refresh(
                     key = 0,
                     loadSize = 1,
@@ -115,7 +114,7 @@ class LatestGifsPagingSourceTest {
         given(api.getLatestGifs(any())).willReturn(null)
         val expectedResult = PagingSource.LoadResult.Error<Int, GifDto>(NullPointerException())
         assertEquals(
-            expectedResult.toString(), latestGifPagingSource.load(
+            expectedResult.toString(), latestGifsPagingSource.load(
                 PagingSource.LoadParams.Refresh(
                     key = 0,
                     loadSize = 1,
@@ -129,12 +128,12 @@ class LatestGifsPagingSourceTest {
     fun `gifs paging source refresh - success`() = runTest {
         given(api.getLatestGifs(any())).willReturn(reviewsResponse)
         val expectedResult = PagingSource.LoadResult.Page(
-            data = reviewsResponse.result,
+            data = reviewsResponse.gifs,
             prevKey = null,
             nextKey = 1
         )
         assertEquals(
-            expectedResult, latestGifPagingSource.load(
+            expectedResult, latestGifsPagingSource.load(
                 PagingSource.LoadParams.Refresh(
                     key = 0,
                     loadSize = 1,

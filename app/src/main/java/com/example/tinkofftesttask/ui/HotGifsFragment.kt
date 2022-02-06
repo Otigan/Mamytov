@@ -46,9 +46,11 @@ class HotGifsFragment : Fragment(R.layout.fragment_hot_gifs) {
         super.onViewCreated(view, savedInstanceState)
 
         val pagingAdapter = PagingAdapter()
-        binding.viewPager.adapter = pagingAdapter
 
         binding.apply {
+
+            viewPager.adapter = pagingAdapter
+
             btnNext.setOnClickListener {
                 val currentPosition = binding.viewPager.currentItem
                 binding.viewPager.currentItem = currentPosition + 1
@@ -57,10 +59,11 @@ class HotGifsFragment : Fragment(R.layout.fragment_hot_gifs) {
                 val currentPosition = binding.viewPager.currentItem
                 binding.viewPager.currentItem = currentPosition - 1
             }
-        }
 
-        binding.viewPager.offscreenPageLimit = ViewPager2.OFFSCREEN_PAGE_LIMIT_DEFAULT
-        binding.viewPager.setPageTransformer(ZoomOutPageTransformer())
+            viewPager.offscreenPageLimit = ViewPager2.OFFSCREEN_PAGE_LIMIT_DEFAULT
+
+            viewPager.setPageTransformer(ZoomOutPageTransformer())
+        }
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -88,7 +91,6 @@ class HotGifsFragment : Fragment(R.layout.fragment_hot_gifs) {
                         if (pagingAdapter.itemCount == 0) {
                             binding.btnPrev.isVisible = false
                         }
-
 
                         binding.apply {
                             viewPager.isVisible =

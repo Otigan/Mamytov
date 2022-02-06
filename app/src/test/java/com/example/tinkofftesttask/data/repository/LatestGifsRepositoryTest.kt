@@ -6,15 +6,11 @@ import androidx.paging.NullPaddedList
 import androidx.paging.PagingData
 import androidx.paging.PagingDataDiffer
 import com.example.tinkofftesttask.data.api.FakeApi
-import com.example.tinkofftesttask.data.model.GifDto
 import com.example.tinkofftesttask.domain.repository.LatestGifsRepository
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.take
-import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.test.TestCoroutineDispatcher
-import kotlinx.coroutines.test.runBlockingTest
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
 import org.junit.Before

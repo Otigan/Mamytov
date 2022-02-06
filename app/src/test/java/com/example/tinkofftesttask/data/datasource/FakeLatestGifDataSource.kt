@@ -2,11 +2,10 @@ package com.example.tinkofftesttask.data.datasource
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.example.tinkofftesttask.data.model.GifDto
 
 class FakeLatestGifDataSource() : PagingSource<Int, GifDto>() {
     var triggerError = false
-    var gifs: List<GifDto> = emptyList()
+    var gifDtos: List<GifDto> = emptyList()
         set(value) {
             println("set")
             field = value
@@ -21,7 +20,7 @@ class FakeLatestGifDataSource() : PagingSource<Int, GifDto>() {
         println("not error")
 
         return LoadResult.Page(
-            data = gifs,
+            data = gifDtos,
             prevKey = null,
             nextKey = null
         )

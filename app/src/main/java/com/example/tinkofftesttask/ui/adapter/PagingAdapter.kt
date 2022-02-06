@@ -5,22 +5,21 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.example.tinkofftesttask.data.model.GifDto
 import com.example.tinkofftesttask.databinding.ItemViewPagerBinding
+import com.example.tinkofftesttask.domain.model.Gif
 
 class PagingAdapter() :
-    PagingDataAdapter<GifDto, PagingAdapter.GifViewHolder>(ARTICLE_COMPARATOR) {
+    PagingDataAdapter<Gif, PagingAdapter.GifViewHolder>(ARTICLE_COMPARATOR) {
 
     companion object {
-        private val ARTICLE_COMPARATOR = object : DiffUtil.ItemCallback<GifDto>() {
-            override fun areContentsTheSame(oldItem: GifDto, newItem: GifDto): Boolean =
+        private val ARTICLE_COMPARATOR = object : DiffUtil.ItemCallback<Gif>() {
+            override fun areContentsTheSame(oldItem: Gif, newItem: Gif): Boolean =
                 oldItem == newItem
 
 
-            override fun areItemsTheSame(oldItem: GifDto, newItem: GifDto): Boolean =
+            override fun areItemsTheSame(oldItem: Gif, newItem: Gif): Boolean =
                 oldItem.id == newItem.id
         }
     }
@@ -39,7 +38,7 @@ class PagingAdapter() :
             circularProgressDrawable.start()
         }*/
 
-        fun bind(gif: GifDto) {
+        fun bind(gif: Gif) {
             binding.apply {
                 Glide.with(root)
                     .load(gif.gifURL)

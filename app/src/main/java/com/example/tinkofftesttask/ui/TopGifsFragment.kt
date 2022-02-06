@@ -46,11 +46,11 @@ class TopGifsFragment : Fragment(R.layout.fragment_top_gifs) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         val pagingAdapter = PagingAdapter()
-        binding.viewPager.adapter = pagingAdapter
 
         binding.apply {
+            viewPager.adapter = pagingAdapter
+
             btnNext.setOnClickListener {
                 val currentPosition = binding.viewPager.currentItem
                 binding.viewPager.currentItem = currentPosition + 1
@@ -59,6 +59,10 @@ class TopGifsFragment : Fragment(R.layout.fragment_top_gifs) {
                 val currentPosition = binding.viewPager.currentItem
                 binding.viewPager.currentItem = currentPosition - 1
             }
+
+            viewPager.offscreenPageLimit = ViewPager2.OFFSCREEN_PAGE_LIMIT_DEFAULT
+
+            viewPager.setPageTransformer(ZoomOutPageTransformer())
         }
         binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
@@ -66,9 +70,6 @@ class TopGifsFragment : Fragment(R.layout.fragment_top_gifs) {
                 binding.btnPrev.isVisible = position != 0
             }
         })
-
-        binding.viewPager.offscreenPageLimit = ViewPager2.OFFSCREEN_PAGE_LIMIT_DEFAULT
-        binding.viewPager.setPageTransformer(ZoomOutPageTransformer())
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {

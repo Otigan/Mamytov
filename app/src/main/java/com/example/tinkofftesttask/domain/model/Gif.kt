@@ -1,6 +1,9 @@
 package com.example.tinkofftesttask.domain.model
 
 data class Gif(
+    val author: String,
+    val canVote: Boolean,
+    val commentsCount: Int,
     val date: String,
     val description: String,
     val fileSize: Int,
@@ -14,5 +17,5 @@ data class Gif(
     val videoSize: Int,
     val videoURL: String,
     val votes: Int,
-    val width: String
+    val width: String,
 )

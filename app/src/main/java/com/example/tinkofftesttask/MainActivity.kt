@@ -27,9 +27,11 @@ class MainActivity : AppCompatActivity() {
 
         val tabsAdapter = TabsAdapter(supportFragmentManager, lifecycle)
 
-        binding.viewPager.adapter = tabsAdapter
-        binding.viewPager.offscreenPageLimit = OFFSCREEN_PAGE_LIMIT_DEFAULT
-        binding.viewPager.setPageTransformer(ZoomOutPageTransformer())
+        binding.apply {
+            viewPager.adapter = tabsAdapter
+            viewPager.offscreenPageLimit = OFFSCREEN_PAGE_LIMIT_DEFAULT
+            viewPager.setPageTransformer(ZoomOutPageTransformer())
+        }
 
         TabLayoutMediator(binding.tabsGif, binding.viewPager) { tab, position ->
             when (position) {

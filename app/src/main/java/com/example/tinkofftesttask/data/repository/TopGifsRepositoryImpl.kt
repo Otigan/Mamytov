@@ -4,7 +4,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.example.tinkofftesttask.data.datasource.TopGifsPagingSource
-import com.example.tinkofftesttask.data.model.GifDto
+import com.example.tinkofftesttask.domain.model.Gif
 import com.example.tinkofftesttask.domain.repository.TopGifsRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -14,7 +14,7 @@ import javax.inject.Singleton
 class TopGifsRepositoryImpl @Inject constructor(private val topGifsPagingSource: TopGifsPagingSource) :
     TopGifsRepository {
 
-    override suspend fun getTopGifs(): Flow<PagingData<GifDto>> =
+    override suspend fun getTopGifs(): Flow<PagingData<Gif>> =
         Pager(
             PagingConfig(
                 pageSize = 5,
