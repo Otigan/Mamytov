@@ -27,10 +27,10 @@
 последнее, популярное
 ○ GET http://developerslife.ru/ <раздел>/<номер страницы>?json=true
 ○ Виды разделов:
-○ latest — последние
-○ hot — горячие
-○ top — лучшие
-■ Пример: https://developerslife.ru/latest/0?json=true
+- latest — последние
+- hot — горячие
+- top — лучшие
+Пример: https://developerslife.ru/latest/0?json=true
 ● UNIT-тесты
 ● Анимации
 * Примечания к реализации:
